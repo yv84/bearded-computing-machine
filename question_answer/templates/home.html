@@ -1,0 +1,8 @@
+{% extends '_layouts/base.html' %}
+{% block headline %}<h1>Электробезопасность</h1>
+{% endblock %}
+
+
+{% block content %}
+<p>{% if user.is_autenticated %} {{user.username }}{% endif %}</p>
+{% endblock content %}
