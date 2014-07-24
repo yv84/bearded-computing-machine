@@ -14,7 +14,7 @@ class SignUpView(generic.CreateView):
 
 class LoginView(generic.FormView):
     form_class = LoginForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('qat:card:list')
     template_name = 'accounts/login.html'
 
     def form_valid(self, form):
@@ -30,7 +30,7 @@ class LoginView(generic.FormView):
 
 
 class LogoutView(generic.RedirectView):
-    url = reverse_lazy('home')
+    url = reverse_lazy('qat:card:list')
 
     def get(self, request, *args, **kwargs):
         logout(request)

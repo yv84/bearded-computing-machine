@@ -13,32 +13,31 @@
         <p style="margin:0px;font-size:20px;" {% if object.answer1.correctly %} class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
-            {{ object.answer1.answer }}</p>
+            1) {{ object.answer1.answer }}</p>
         <p style="margin:0px;padding:0px;font-size:20px;" {% if object.answer2.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
-            {{ object.answer2.answer }}</p>
+            2) {{ object.answer2.answer }}</p>
         <p style="margin:0px;font-size:20px;" {% if object.answer3.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
-            {{ object.answer3.answer }}</p>
+            3) {{ object.answer3.answer }}</p>
         <p style="margin:0px;font-size:20px;" {% if object.answer4.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
-            {{ object.answer4.answer }}</p>
+            4) {{ object.answer4.answer }}</p>
         <p style="margin:0px;font-size:20px;" {% if object.answer5.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
-            {{ object.answer5.answer }}</p>
-
+            5) {{ object.answer5.answer }}</p>
         <hr>
     </div>
 </div>
 <div class="row">
     <br><hr>
     <div class="col-sm-6">
-        <p><a href="{% url 'qat:ask:list' %}">Back to lists asks</a></p>
-        <p><a href="{% url 'qat:card:list' %}">Back to lists cards</a></p>
+        <p><a href="{% url 'qat:ask:list' %}">Вернуться к списку вопросов</a></p>
+        <p><a href="{% url 'qat:card:list' %}">Вернуться к списку билетов</a></p>
     </div>
 </div>
 {% endblock %}

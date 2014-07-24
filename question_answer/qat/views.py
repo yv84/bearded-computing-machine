@@ -1,12 +1,13 @@
 from django.views import generic
+from django.core.urlresolvers import reverse_lazy
 
 from . import models
 
 
 
 
-class HomePageView(generic.TemplateView):
-    template_name = 'home.html'
+class HomePageView(generic.RedirectView):
+    url = reverse_lazy('qat:card:list')
 
 
 class AnswerListView(generic.ListView):
