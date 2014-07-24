@@ -38,7 +38,7 @@ class Card(models.Model):
     ask9 = models.OneToOneField(Ask, related_name='ask9')
 
     def __str__(self):
-        return "".join(["card ", str(nomer)])
+        return "".join(["card ", str(self.nomer)])
 
     def get_absolute_url(self):
-        return reverse('q_a_t:card')
+        return reverse('qat:detail', kwargs={'pk': self.pk})

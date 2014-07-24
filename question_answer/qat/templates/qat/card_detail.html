@@ -1,0 +1,27 @@
+ {% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ object.name }} | Lists | {{ block.super }}{% endblock title %}
+
+{% block headline %}
+<h1>{{ object.nomer }}</h1>
+<h2>Your Lists</h2>
+{% endblock headline %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">Add a new talk</h1>
+            </div>
+            <div class="panel-body">
+
+            </div>
+        </div>
+
+        <p><a href="{% url 'qat:update' object.pk %}">Edit this list</a></p>
+        <p><a href="{% url 'qat:list' %}">Back to lists</a></p>
+    </div>
+</div>
+{% endblock %}
