@@ -9,6 +9,9 @@ class Answer(models.Model):
     def __str__(self):
         return self.answer[:50]
 
+    def get_absolute_url(self):
+        return reverse('qat:answer:detail', kwargs={'pk': self.pk})
+
 
 class Ask(models.Model):
     ask = models.CharField(max_length=10000)
@@ -22,7 +25,7 @@ class Ask(models.Model):
         return self.ask[:50]
 
     def get_absolute_url(self):
-        return reverse('q_a_t:ask ')
+        return reverse('qat:ask:detail', kwargs={'pk': self.pk})
 
 
 class Card(models.Model):
@@ -41,4 +44,4 @@ class Card(models.Model):
         return "".join(["card ", str(self.nomer)])
 
     def get_absolute_url(self):
-        return reverse('qat:detail', kwargs={'pk': self.pk})
+        return reverse('qat:card:detail', kwargs={'pk': self.pk})

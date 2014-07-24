@@ -1,0 +1,31 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ object.name }} | Lists | {{ block.super }}{% endblock title %}
+
+{% block headline %}
+<h1>{{ object.answer }}</h1>
+{% endblock headline %}
+
+{% block content %}
+<style>
+    .answer_hide {background: black;}
+    .answer_true {background: #1AF029;}
+    .answer_false {background: #F5111D;}
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <p {% if object.correctly %}class="answer_true"
+            {% else %}class="answer_false"{% endif %}>
+            <a href="{% url 'qat:answer:detail' object.pk %}"></a>
+            {{ object.answer }}</p>
+    </div>
+</div>
+<div class="row">
+    <br><hr>
+    <div class="col-sm-6">
+        <p><a href="{% url 'qat:ask:list' %}">Back to lists asks</a></p>
+        <p><a href="{% url 'qat:card:list' %}">Back to lists cards</a></p>
+    </div>
+</div>
+{% endblock %}

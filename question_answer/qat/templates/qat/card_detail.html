@@ -1,27 +1,30 @@
- {% extends '_layouts/base.html' %}
+{% extends '_layouts/base.html' %}
 {% load crispy_forms_tags %}
 
 {% block title %}{{ object.name }} | Lists | {{ block.super }}{% endblock title %}
 
 {% block headline %}
 <h1>{{ object.nomer }}</h1>
-<h2>Your Lists</h2>
 {% endblock headline %}
 
 {% block content %}
 <div class="row">
+    <div class="col-sm-12">
+        <p><a href="{% url 'qat:ask:detail' object.ask1.pk %}">{{ object.ask1.ask }}</a></p>
+        <p><a href="{% url 'qat:ask:detail' object.ask2.pk %}">{{ object.ask2.ask }}</a></p>
+        <p><a href="{% url 'qat:ask:detail' object.ask3.pk %}">{{ object.ask3.ask }}</a></p>
+        <p><a href="{% url 'qat:ask:detail' object.ask4.pk %}">{{ object.ask4.ask }}</a></p>
+        <p><a href="{% url 'qat:ask:detail' object.ask5.pk %}">{{ object.ask5.ask }}</a></p>
+        <p><a href="{% url 'qat:ask:detail' object.ask6.pk %}">{{ object.ask6.ask }}</a></p>
+        <p><a href="{% url 'qat:ask:detail' object.ask7.pk %}">{{ object.ask7.ask }}</a></p>
+        <p><a href="{% url 'qat:ask:detail' object.ask8.pk %}">{{ object.ask8.ask }}</a></p>
+        <p><a href="{% url 'qat:ask:detail' object.ask9.pk %}">{{ object.ask9.ask }}</a></p>
+    </div>
+</div>
+<div class="row">
+    <br><hr>
     <div class="col-sm-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h1 class="panel-title">Add a new talk</h1>
-            </div>
-            <div class="panel-body">
-
-            </div>
-        </div>
-
-        <p><a href="{% url 'qat:update' object.pk %}">Edit this list</a></p>
-        <p><a href="{% url 'qat:list' %}">Back to lists</a></p>
+        <p><a href="{% url 'qat:card:list' %}">Back to lists cards</a></p>
     </div>
 </div>
 {% endblock %}
