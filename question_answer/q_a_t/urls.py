@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-from .views import HomePageView, SignUpView, LoginView
+from .views import HomePageView, SignUpView, LoginView, LogoutView
 
 
 urlpatterns = patterns('',
@@ -11,5 +11,5 @@ urlpatterns = patterns('',
     url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^accounts/register/$', SignUpView.as_view(), name='signup'),
     url(r'^accounts/login/$', LoginView.as_view(), name='login'),
-    url(r'^accounts/logout/$', SignUpView.as_view(), name='logout'),
+    url(r'^accounts/logout/$', LogoutView.as_view(), name='logout'),
 )

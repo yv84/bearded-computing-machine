@@ -13,7 +13,6 @@ class HomePageView(generic.TemplateView):
 class SignUpView(generic.CreateView):
     form_class = RegistrationForm
     model = User
-    success_url = reverse_lazy('home')
     template_name = 'accounts/signup.html'
 
 
@@ -32,3 +31,11 @@ class LoginView(generic.FormView):
             return super(LoginView, self).form_valid(form)
         else:
             return self.form_invalid(form)
+
+
+class LogoutView(generic.RedirectView):
+    url = reverse_lazy('home')
+
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return super(LogoutView, self).get(request, *args, **kwargs)

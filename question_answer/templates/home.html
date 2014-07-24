@@ -4,5 +4,8 @@
 
 
 {% block content %}
-<p>{% if user.is_autenticated %} {{user.username }}{% endif %}</p>
+<p>{% if user.is_authenticated %} Вы вошли как: {{user.username }}
+{% else %}{% endif %}
+</p>
+
 {% endblock content %}
