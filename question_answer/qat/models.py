@@ -22,7 +22,7 @@ class Ask(models.Model):
         return self.ask[:50]
 
     def get_absolute_url(self):
-        return reverse('qat:ask ')
+        return reverse('q_a_t:ask ')
 
 
 class Card(models.Model):
@@ -41,4 +41,4 @@ class Card(models.Model):
         return "".join(["card ", str(nomer)])
 
     def get_absolute_url(self):
-        return reverse('qat:card')
+        return reverse('q_a_t:card')

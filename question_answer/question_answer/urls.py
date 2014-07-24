@@ -3,7 +3,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-import q_a_t
+import qat
 
 urlpatterns = patterns('',
     # Examples:
@@ -11,6 +11,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('q_a_t.urls')),
-    url(r'^', include('auth.urls')),
+    url(r'^', include('qat.urls', namespace='qat',)),
+    url(r'^', include('auth.urls', namespace='auth',)),
 )
