@@ -1,27 +1,68 @@
-{% extends '_layouts/base.html' %}
+<html>
+<head>
+    <style>
+      body {
+        /*width: 980px;*/
+        word-break: break-all;
+        word-wrap: break-word;
+        font-size: 20px;
+      }
+      ul {
+        margin: 0px;
+        padding: 0px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+</head>
+<body>
+<ul class="list-group" style="list-style-type: none;">
+    {% for object in object_list %}
+    <li class="list-group-item">
+        <a href="{{ object.get_absolute_url }}">$
+          {% if object.ask1.nomer %}{{ object.ask1.nomer }}/1{% endif %}
+          {% if object.ask2.nomer %}{{ object.ask2.nomer }}/2{% endif %}
+          {% if object.ask3.nomer %}{{ object.ask3.nomer }}/3{% endif %}
+          {% if object.ask4.nomer %}{{ object.ask4.nomer }}/4{% endif %}
+          {% if object.ask5.nomer %}{{ object.ask5.nomer }}/5{% endif %}
+          {% if object.ask6.nomer %}{{ object.ask6.nomer }}/6{% endif %}
+          {% if object.ask7.nomer %}{{ object.ask7.nomer }}/7{% endif %}
+          {% if object.ask8.nomer %}{{ object.ask8.nomer }}/8{% endif %}
+          {% if object.ask9.nomer %}{{ object.ask9.nomer }}/9{% endif %}
+           - {{ object.ask }} </a>
+    </li>
+    <li class="list-group-item">
+        <a href="{{ object.get_answer1 }}">
+        {% if object.answer1.correctly %}@ {% else %}# {% endif %}
+        1- {{ object.answer1.answer }}</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{{ object.get_answer2 }}">
+        {% if object.answer2.correctly %}@ {% else %}# {% endif %}
+        2- {{ object.answer2.answer }}</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{{ object.get_answer3 }}">
+        {% if object.answer3.correctly %}@ {% else %}# {% endif %}
+        3- {{ object.answer3.answer }}</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{{ object.get_answer4 }}">
+        {% if object.answer4.correctly %}@ {% else %}# {% endif %}
+        4- {{ object.answer4.answer }}</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{{ object.get_answer5 }}">
+        {% if object.answer5.correctly %}@ {% else %}# {% endif %}
+        5- {{ object.answer5.answer }}</a>
+    </li>
+    <li>{{ object.separator }}</li>
+    {% empty %}
+    <li class="list-group-item">You have no lists</li>
+    {% endfor %}
+</ul>
 
-{% block title %}Lists | {{ block.super }}{% endblock title %}
-
-{% block headline %}<h1>Your Lists</h1>{% endblock headline %}
-
-{% block content %}
-<div class="row">
-    <div class="col-sm-6">
-        <ul class="list-group">
-            {% for object in object_list %}
-            <li class="list-group-item">
-                <a href="{{ object.get_absolute_url }}">{{ object }}</a>
-            </li>
-            {% empty %}
-            <li class="list-group-item">You have no lists</li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
-<div class="row">
-    <br><hr>
-    <div class="col-sm-6">
-        <p><a href="{% url 'qat:card:list' %}">Вернуться к списку билетов</a></p>
-    </div>
-</div>
-{% endblock %}
+</body>
+</html>

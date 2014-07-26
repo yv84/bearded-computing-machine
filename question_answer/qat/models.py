@@ -27,6 +27,24 @@ class Ask(models.Model):
     def get_absolute_url(self):
         return reverse('qat:ask:detail', kwargs={'pk': self.pk})
 
+    def get_answer1(self):
+        return reverse('qat:answer:detail', kwargs={'pk': self.answer1.pk})
+
+    def separator(self):
+        return "="*66
+
+    def get_next_url(self):
+        try:
+            return reverse('qat:ask:detail', kwargs={'pk': self.pk+1})
+        except:
+            return reverse('qat:ask:detail', kwargs={'pk': self.pk})
+
+    def get_prev_url(self):
+        try:
+            return reverse('qat:ask:detail', kwargs={'pk': self.pk-1})
+        except:
+            return reverse('qat:ask:detail', kwargs={'pk': self.pk})
+
 
 class Card(models.Model):
     nomer = models.IntegerField()

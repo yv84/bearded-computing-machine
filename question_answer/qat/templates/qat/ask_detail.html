@@ -10,23 +10,23 @@
 {% block content %}
 <div class="row">
     <div id="answers" class="col-xs-12">
-        <p style="margin:0px;font-size:20px;" {% if object.answer1.correctly %} class="answer_true"
+        <p style="margin:1px;font-size:20px;" {% if object.answer1.correctly %} class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
             1) {{ object.answer1.answer }}</p>
-        <p style="margin:0px;padding:0px;font-size:20px;" {% if object.answer2.correctly %}class="answer_true"
+        <p style="margin:1px;padding:0px;font-size:20px;" {% if object.answer2.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
             2) {{ object.answer2.answer }}</p>
-        <p style="margin:0px;font-size:20px;" {% if object.answer3.correctly %}class="answer_true"
+        <p style="margin:1px;font-size:20px;" {% if object.answer3.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
             3) {{ object.answer3.answer }}</p>
-        <p style="margin:0px;font-size:20px;" {% if object.answer4.correctly %}class="answer_true"
+        <p style="margin:1px;font-size:20px;" {% if object.answer4.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
             4) {{ object.answer4.answer }}</p>
-        <p style="margin:0px;font-size:20px;" {% if object.answer5.correctly %}class="answer_true"
+        <p style="margin:1px;font-size:20px;" {% if object.answer5.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
             5) {{ object.answer5.answer }}</p>
@@ -36,6 +36,11 @@
 <div class="row">
     <br><hr>
     <div class="col-sm-6">
+        <p><a href="{% url 'qat:ask:detail' object.pk|add:-1 %}">Предыдущий</a></p>
+        <p><a href="{% url 'qat:ask:detail' object.pk|add:1 %}">Следующий</a></p>
+        <p><a href="{{ object.get_prev_url }}">Предыдущий</a></p>
+        <p><a href="{{ object.get_next_url }}">Следующий</a></p>
+        <br><hr>
         <p><a href="{% url 'qat:ask:list' %}">Вернуться к списку вопросов</a></p>
         <p><a href="{% url 'qat:card:list' %}">Вернуться к списку билетов</a></p>
     </div>

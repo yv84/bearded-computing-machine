@@ -18,11 +18,11 @@ answer_patterns = patterns(
 
 asks_patterns = patterns(
     '',
-    url(r'^d/(?P<pk>\d+)/$', AskDetailView.as_view(), name='detail'),
+    url(r'^d/(?P<pk>\d+)/', AskDetailView.as_view(), name='detail'),
     url(r'^l$', AskListView.as_view(), name='list'),
     url(r'^l$', AskListView.as_view(), name='create'),
-    url(r'^d/(?P<pk>\d+)/$', AskDetailView.as_view(), name='update'),
-    url(r'^d/(?P<pk>\d+)/$', AskDetailView.as_view(), name='delete'),
+    url(r'^d/(?P<pk>\d+)/', AskDetailView.as_view(), name='update'),
+    url(r'^d/(?P<pk>\d+)/', AskDetailView.as_view(), name='delete'),
 )
 
 
