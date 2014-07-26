@@ -51,19 +51,6 @@
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     {% block js %}
-    <script>
-        $('#answers>p').unbind();
-
-        $('#answers').find('>p').on('click', function() {
-          if ($(this).hasClass('answer_true')) {
-            $(this).css("background", "#1AF029");
-          }
-          if ($(this).hasClass('answer_false')) {
-            return $(this).css("background", "#F5111D");
-          }
-        });
-
-    </script>
     {% endblock js %}
 </body>
 </html>

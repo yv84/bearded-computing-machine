@@ -10,23 +10,23 @@
 {% block content %}
 <div class="row">
     <div id="answers" class="col-xs-12">
-        <p style="margin:1px;font-size:20px;" {% if object.answer1.correctly %} class="answer_true"
+        <p id="choice1" style="margin:1px;font-size:20px;" {% if object.answer1.correctly %} class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
             1) {{ object.answer1.answer }}</p>
-        <p style="margin:1px;padding:0px;font-size:20px;" {% if object.answer2.correctly %}class="answer_true"
+        <p id="choice2" style="margin:1px;padding:0px;font-size:20px;" {% if object.answer2.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
             2) {{ object.answer2.answer }}</p>
-        <p style="margin:1px;font-size:20px;" {% if object.answer3.correctly %}class="answer_true"
+        <p id="choice3" style="margin:1px;font-size:20px;" {% if object.answer3.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
             3) {{ object.answer3.answer }}</p>
-        <p style="margin:1px;font-size:20px;" {% if object.answer4.correctly %}class="answer_true"
+        <p id="choice4" style="margin:1px;font-size:20px;" {% if object.answer4.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
             4) {{ object.answer4.answer }}</p>
-        <p style="margin:1px;font-size:20px;" {% if object.answer5.correctly %}class="answer_true"
+        <p id="choice5" style="margin:1px;font-size:20px;" {% if object.answer5.correctly %}class="answer_true"
             {% else %}class="answer_false"{% endif %}>
             <a href="#"></a>
             5) {{ object.answer5.answer }}</p>
@@ -36,13 +36,43 @@
 <div class="row">
     <br><hr>
     <div class="col-sm-6">
-        <p><a href="{% url 'qat:ask:detail' object.pk|add:-1 %}">Предыдущий</a></p>
-        <p><a href="{% url 'qat:ask:detail' object.pk|add:1 %}">Следующий</a></p>
-        <p><a href="{{ object.get_prev_url }}">Предыдущий</a></p>
-        <p><a href="{{ object.get_next_url }}">Следующий</a></p>
+        <p ><a id="prev" href="{{ object.get_prev_url }}">Предыдущий (q)</a></p>
+        <p ><a id="next" href="{{ object.get_next_url }}">Следующий (w)</a></p>
         <br><hr>
         <p><a href="{% url 'qat:ask:list' %}">Вернуться к списку вопросов</a></p>
         <p><a href="{% url 'qat:card:list' %}">Вернуться к списку билетов</a></p>
     </div>
 </div>
 {% endblock %}
+{% block js %}
+<script>
+    $('#answers>p').unbind();
+
+    $('#answers').find('>p').on('click', function() {
+      if ($(this).hasClass('answer_true')) {
+        $(this).css("background", "#1AF029");
+      }
+      if ($(this).hasClass('answer_false')) {
+        return $(this).css("background", "#F5111D");
+      }
+    });
+
+    $('body').bind('keypress', function(e) {
+        if(e.keyCode == 49){$('#choice1').trigger("click");}
+        if(e.keyCode == 50){$('#choice2').trigger("click")}
+        if(e.keyCode == 51){$('#choice3').trigger("click")}
+        if(e.keyCode == 52){$('#choice4').trigger("click")}
+        if(e.keyCode == 53){$('#choice5').trigger("click")}
+        if(e.keyCode == 113){
+            var href = $('#prev').attr('href');
+            window.location.href = href; //causes the browser to refresh and load the requested url
+            $('#prev').trigger("click");
+        }
+        if(e.keyCode == 119){
+            var href = $('#next').attr('href');
+            window.location.href = href; //causes the browser to refresh and load the requested url
+            $('#next').trigger("click");
+        }
+    });
+</script>
+{% endblock js %}
